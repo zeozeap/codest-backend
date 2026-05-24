@@ -5,6 +5,7 @@ export interface IContact {
   email: string;
   subject: string;
   message: string;
+  reply?: string;
   isRead: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -31,6 +32,10 @@ const contactSchema = new mongoose.Schema<IContact>(
     message: {
       type: String,
       required: true,
+    },
+    reply: {
+      type: String,
+      default: null,
     },
     isRead: {
       type: Boolean,

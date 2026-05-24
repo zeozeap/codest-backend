@@ -31,10 +31,11 @@ router.post("/register", async (req: Request, res: Response): Promise<void> => {
 
     await admin.save();
 
+    const expiresIn = process.env.JWT_EXPIRES_IN || "7d";
     const token = jwt.sign(
       { adminId: admin._id },
       process.env.JWT_SECRET as string,
-      { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
+      { expiresIn } as jwt.SignOptions
     );
 
     res.status(201).json({
@@ -67,10 +68,11 @@ router.post("/login", async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
+    const expiresIn = process.env.JWT_EXPIRES_IN || "7d";
     const token = jwt.sign(
       { adminId: admin._id },
       process.env.JWT_SECRET as string,
-      { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
+      { expiresIn } as jwt.SignOptions
     );
 
     res.json({
