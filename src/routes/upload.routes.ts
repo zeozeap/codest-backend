@@ -2,7 +2,8 @@ import { Router, Response } from "express";
 import fs from "fs";
 import { upload } from "../middleware/upload.middleware";
 import { uploadToCloudinary } from "../config/cloudinary";
-import { authMiddleware, AuthRequest } from "../middleware/auth.middleware";
+import { authMiddleware } from "../middleware/auth.middleware";
+import { AuthRequest } from "../types/express";
 
 const router = Router();
 

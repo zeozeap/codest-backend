@@ -5,7 +5,7 @@ import { Admin } from "../models/admin.model";
 
 dotenv.config();
 
-const createAdmin = async () => {
+const createAdmin = async (): Promise<void> => {
   const args = process.argv.slice(2);
   
   if (args.length < 2) {

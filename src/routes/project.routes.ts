@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import { Project } from "../models/project.model";
-import { authMiddleware, AuthRequest } from "../middleware/auth.middleware";
+import { authMiddleware } from "../middleware/auth.middleware";
+import { AuthRequest } from "../types/express";
 import { deleteFromCloudinary } from "../config/cloudinary";
 
 const router = Router();

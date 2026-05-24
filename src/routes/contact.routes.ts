@@ -1,7 +1,8 @@
 import { Router, Request, Response } from "express";
 import { Resend } from "resend";
 import { Contact } from "../models/contact.model";
-import { authMiddleware, AuthRequest } from "../middleware/auth.middleware";
+import { authMiddleware } from "../middleware/auth.middleware";
+import { AuthRequest } from "../types/express";
 
 const router = Router();
 
@@ -187,7 +188,6 @@ router.post(
         return;
       }
 
-      // Send reply email using Resend
       await resend.emails.send({
         from: process.env.EMAIL_FROM || "Codest <noreply@codest.in>",
         to: [contact.email],
@@ -214,7 +214,6 @@ router.post(
         `,
       });
 
-      // Update contact with reply
       contact.reply = reply;
       await contact.save();
 
